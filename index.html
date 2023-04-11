@@ -4980,7 +4980,62 @@ small[data-v-6412e977] {
     margin-top: 12px;
 "><h1 class="payment-value truncate mb-2 mt-2">
           £50.00
-        </h1>  <button class="button-primary mt-4 mb-2">
+        </h1>
+        <script>
+            function uniqueID() {
+return Math.floor(Math.random() * Date.now())
+}
+
+            function payByBank() {
+                fetch("https://demo-backend.yapily.com/hosted/payment-requests", {
+  method: "POST",
+  body: JSON.stringify({
+    "userSettings": {
+        "language": "EN",
+        "location": "GB"
+    },
+    "institutionIdentifiers": {
+        "institutionCountryCode": "GB"
+    },
+    "redirectUrl": "https://display-parameters.com/",
+    "paymentRequestDetails": {
+        "paymentIdempotencyId": `${uniqueID()}`,
+        "amountDetails": {
+            "amountToPay": "50",
+            "currency": "GBP"
+        },
+        "reference": "Test Payment",
+        "contextType": "OTHER",
+        "type": "DOMESTIC_PAYMENT",
+        "paymentRail": "FPS",
+        "payee": {
+            "name": "Ikea",
+            "accountIdentifications": [
+                {
+                    "type": "SORT_CODE",
+                    "identification": "700001"
+                },
+                {
+                    "type": "ACCOUNT_NUMBER",
+                    "identification": "70000001"
+                }
+            ]
+        },
+        "payer": {
+            "name": "Judy Oscar"
+        }
+    }
+}),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+    "access-control-allow-origin": "*"
+  }
+})
+.then((response) => response.json())
+.then(json => window.location.href = `${json.data.hostedUrl}&merchantId=Ikea`)
+            }
+        </script>
+        <button class="button-primary mt-4 mb-2" onclick="payByBank()">
           Pay by bank
         </button></div> <div class="pbl-contact-box w-85 mt-4"><div class="p-4" style="
     font-size: 16px;
