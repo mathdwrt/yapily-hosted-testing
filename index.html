@@ -43,7 +43,7 @@
                         "paymentRequestDetails": {
                             "paymentIdempotencyId": `${uniqueID()}`,
                             "amountDetails": {
-                                "amountToPay": 1,
+                                "amountToPay": 0.1,
                                 "currency": "GBP"
                             },
                             "reference": "Payment to Selfridges",
@@ -55,11 +55,11 @@
                                 "accountIdentifications": [
                                     {
                                         "type": "SORT_CODE",
-                                        "identification": "080228"
+                                        "identification": "040004"
                                     },
                                     {
                                         "type": "ACCOUNT_NUMBER",
-                                        "identification": "65012253"
+                                        "identification": "35715361"
                                     }
                                 ]
                             }
@@ -235,7 +235,7 @@
             <div class="flex flex-row text-xs font-light">
                 <span>My bag (1 item)</span>
                 <div class="flex-1"></div>
-                <span>£1</span>
+                <span>£0.1</span>
             </div>
             <div class="flex flex-row gap-5">
                 <img style="height: 115px; width: 80px;" src="kettle.jpeg">
@@ -247,7 +247,7 @@
             <div class="flex flex-row text-base font-semibold mt-2 mb-2">
                 <span>Total</span>
                 <div class="flex-1"></div>
-                <span>£1</span>
+                <span>£0.1</span>
             </div>
         </div>
     </div>
