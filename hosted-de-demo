@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col items-center">
+    <div class="flex flex-col gap-5">
+        <!-- <h1 class="text-6xl font-bold text-center mt-6">DE Sports</h1>
+         -->
+        <img class="mt-6 object-contain" src="logo.png" />
+        <h3 class="text-4lx font-semibold text-center">Germany's best sports retailer &#9917;
+            &#127465;&#127466;
+        </h3>
+        <img class="object-contain h-60"
+            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/928f082e-4b98-4fb5-9eb2-13929291857e/alphafly-2-road-racing-shoes-fvDSdT.png" />
+
+        <h4 class="text-2xl font-semibold text-center">€100</h4>
+
+        <script>
+            function uniqueID() {
+                return Math.floor(Math.random() * Date.now())
+            }
+
+            function payByBank() {
+                fetch("https://demo-backend.yapily.com/hosted/payment-requests", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "userSettings": {
+                            "language": "EN",
+                            "location": "DE"
+                        },
+                        "institutionIdentifiers": {
+                            "institutionCountryCode": "DE"
+                        },
+                        "redirectUrl": "https://mathdwrt.github.io/hosted-de-success.html",
+                        "paymentRequestDetails": {
+                            "paymentIdempotencyId": `${uniqueID()}`,
+                            "amountDetails": {
+                                "amountToPay": "100",
+                                "currency": "EUR"
+                            },
+                            "reference": "Test Payment",
+                            "contextType": "OTHER",
+                            "type": "DOMESTIC_PAYMENT",
+                            "paymentRail": "FPS",
+                            "payee": {
+                                "name": "DESports",
+                                "accountIdentifications": [
+                                    {
+                                        "type": "IBAN",
+                                        "identification": "DE06550205000222222222"
+                                    }
+                                ]
+                            },
+                            "payer": {
+                                "name": "Mathias"
+                            }
+                        }
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "access-control-allow-origin": "*"
+                    }
+                })
+                    .then((response) => response.json())
+                    .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=DESports`)
+            }
+        </script>
+
+        <button class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-1" style="background-color: #0718C4;"
+            onclick="payByBank()">Pay by
+            bank</button>
+    </div>
+</body>
+
+</html>
