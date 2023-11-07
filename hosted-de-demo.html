@@ -7,34 +7,34 @@
 <body class="flex flex-col items-center px-6 py-8">
     <div class="flex flex-col gap-10">
         <div class="flex flex-col gap-5">
-            <h1 class="text-2xl font-bold text-center">Test our Payment Journey by Donating €1 to a Charity
+            <h1 class="text-3xl font-bold text-center">Test our Payment Journey by Donating €1 to a Charity
             </h1>
-            <h2 class="text-xl text-center">Select your favourite charity below to kick off the payment
+            <h2 class="text-2xl text-center">Select your favourite charity below to kick off the payment
                 journey and
                 proceed with a €1
                 donation</h2>
         </div>
 
         <div class="flex flex-col gap-5">
-            <h1 class="text-2xl font-bold text-center">Testen Sie unsere Payment Journey und spenden Sie 1 €
+            <h1 class="text-3xl font-bold text-center">Testen Sie unsere Payment Journey und spenden Sie 1 €
                 an eine
                 Wohltätigkeitsorganisation</h1>
-            <h2 class="text-xl text-center">Wählen Sie unten Ihre bevorzugte Wohltätigkeitsorganisation aus,
+            <h2 class="text-2xl text-center">Wählen Sie unten Ihre bevorzugte Wohltätigkeitsorganisation aus,
                 um die
                 Zahlung einzuleiten und mit einer 1 €-Spende fortzufahren Spende</h2>
         </div>
 
         <div class="flex flex-row gap-5 justify-center items-center">
-            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-60"
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
                 style="border-color: gainsboro; border-width: 1px;" onclick="payWWF()">
                 <img src="https://demo.yapily.com/_nuxt/img/charity-generic-wwf.7421ff8.png" alt="World Wildlife Fund"
                     class="" style="max-height: 100px;">
             </div>
-            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-60"
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
                 style="border-color: gainsboro; border-width: 1px;" onclick="payDRK()">
                 <img src="https://demo.yapily.com/_nuxt/img/charity-de-drk.729f84d.png" alt="DRK" class="">
             </div>
-            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-60"
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
                 style="border-color: gainsboro; border-width: 1px;" onclick="payUnicef()">
                 <img src="https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png" alt="Unicef" class="">
             </div>
@@ -86,7 +86,7 @@
                     }
                 })
                     .then((response) => response.json())
-                    .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=Green`)
+                    .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=White`)
             }
 
             function payWWF() {
