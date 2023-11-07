@@ -25,17 +25,17 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
-            <div class="p-2 rounded grid place-content-center cursor-pointer"
-                style="height: 140px; width: 190px; border-color: gainsboro; border-width: 1px;" onclick="payWWF()">
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-48 w-44 md:h-64 w-60"
+                style="border-color: gainsboro; border-width: 1px;" onclick="payWWF()">
                 <img src="https://demo.yapily.com/_nuxt/img/charity-generic-wwf.7421ff8.png" alt="World Wildlife Fund"
                     class="" style="max-height: 100px;">
             </div>
-            <div class="p-2 rounded grid place-content-center cursor-pointer"
-                style="height: 140px; width: 190px; border-color: gainsboro; border-width: 1px;" onclick="payDRK()">
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-48 w-44 md:h-64 w-60"
+                style="border-color: gainsboro; border-width: 1px;" onclick="payDRK()">
                 <img src="https://demo.yapily.com/_nuxt/img/charity-de-drk.729f84d.png" alt="DRK" class="">
             </div>
-            <div class="p-2 rounded grid place-content-center cursor-pointer"
-                style="height: 140px; width: 190px; border-color: gainsboro; border-width: 1px;" onclick="payUnicef()">
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-48 w-44 md:h-64 w-60"
+                style="border-color: gainsboro; border-width: 1px;" onclick="payUnicef()">
                 <img src="https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png" alt="Unicef" class="">
             </div>
         </div>
@@ -86,7 +86,7 @@
                     }
                 })
                     .then((response) => response.json())
-                    .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=White`)
+                    .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=Green`)
             }
 
             function payWWF() {
