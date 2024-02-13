@@ -16,21 +16,27 @@
         </div>
 
         <div class="flex flex-col gap-5">
-            <h1 class="text-3xl font-bold text-center">Testez notre méthode de paiement en faisant un don de 1€ à une
-                association caritative</h1>
-            <h2 class="text-2xl text-center">Sélectionnez votre organisation caritative préférée ci-dessous pour lancer
-                le processus de paiement et faire un don de 1€.</h2>
+            <h1 class="text-3xl font-bold text-center">Testen Sie unsere Payment Journey und spenden Sie 1 €
+                an eine
+                Wohltätigkeitsorganisation</h1>
+            <h2 class="text-2xl text-center">Wählen Sie unten Ihre bevorzugte Wohltätigkeitsorganisation aus,
+                um die
+                Zahlung einzuleiten und mit einer 1 €-Spende fortzufahren Spende</h2>
         </div>
 
         <div class="flex flex-row gap-5 justify-center items-center">
             <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
-                style="border-color: gainsboro; border-width: 1px;" onclick="payUnicef()">
-                <img src="https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png" alt="Unicef" class="">
+                style="border-color: gainsboro; border-width: 1px;" onclick="payWWF()">
+                <img src="https://demo.yapily.com/_nuxt/img/charity-generic-wwf.7421ff8.png" alt="World Wildlife Fund"
+                    class="" style="max-height: 100px;">
             </div>
             <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
-                style="border-color: gainsboro; border-width: 1px;" onclick="paySecourPopulaire()">
-                <img src="https://demo.yapily.com/_nuxt/img/charity-fr-secours-populaire.5ab7b8d.png"
-                    alt="Le Secours Populaire" class="">
+                style="border-color: gainsboro; border-width: 1px;" onclick="payDRK()">
+                <img src="https://demo.yapily.com/_nuxt/img/charity-de-drk.729f84d.png" alt="DRK" class="">
+            </div>
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
+                style="border-color: gainsboro; border-width: 1px;" onclick="payUnicef()">
+                <img src="https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png" alt="Unicef" class="">
             </div>
         </div>
 
@@ -45,13 +51,13 @@
                     method: "POST",
                     body: JSON.stringify({
                         "userSettings": {
-                            "language": "fr",
-                            "location": "FR"
+                            "language": "DE",
+                            "location": "DE"
                         },
                         "institutionIdentifiers": {
-                            "institutionCountryCode": "FR"
+                            "institutionCountryCode": "DE"
                         },
-                        "redirectUrl": "https://mathdwrt.github.io/yapily-hosted-testing/hosted-callback.html",
+                        "redirectUrl": "https://mathdwrt.github.io/yapily-hosted-testing/callback.html",
                         "paymentRequestDetails": {
                             "paymentIdempotencyId": `${uniqueID()}`,
                             "amountDetails": {
@@ -64,6 +70,7 @@
                             "paymentRail": "FPS",
                             "payee": {
                                 "name": name,
+                                "address": { "country": "DE" },
                                 "accountIdentifications": [
                                     {
                                         "type": "IBAN",
@@ -82,12 +89,16 @@
                     .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=Green`)
             }
 
-            function paySecourPopulaire() {
-                payByBank("Le Secours Populaire", "FR4620041000012029874R02026")
+            function payWWF() {
+                payByBank("WWF", "DE06550205000222222222")
+            }
+
+            function payDRK() {
+                payByBank("DRK e.V.", "DE63370205000005023307")
             }
 
             function payUnicef() {
-                payByBank("UNICEF", "FR7617515900000852379628548")
+                payByBank("Committee For UNICEF", "DE57370205000000300000")
             }
         </script>
     </div>

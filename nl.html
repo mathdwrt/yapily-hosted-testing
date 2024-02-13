@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col items-center px-6 py-8">
+    <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-5">
+            <h1 class="text-3xl font-bold text-center">Test our Payment Journey by Donating €1 to a Charity
+            </h1>
+            <h2 class="text-2xl text-center">Select your favourite charity below to kick off the payment
+                journey and
+                proceed with a €1
+                donation</h2>
+        </div>
+
+        <div class="flex flex-col gap-5">
+            <h1 class="text-3xl font-bold text-center">Test onze betalingsreis door €1 te doneren aan een goed doel.
+            </h1>
+            <h2 class="text-2xl text-center">Selecteer hieronder je favoriete goede doel om te beginnen met betalen en
+                ga verder met een €1 donatie.</h2>
+        </div>
+
+        <div class="flex flex-row gap-5 justify-center items-center">
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
+                style="border-color: gainsboro; border-width: 1px;" onclick="payWWF()">
+                <img src="https://demo.yapily.com/_nuxt/img/charity-generic-wwf.7421ff8.png" alt="World Wildlife Fund"
+                    class="" style="max-height: 100px;">
+            </div>
+            <div class="p-2 rounded grid place-content-center cursor-pointer h-64 w-64"
+                style="border-color: gainsboro; border-width: 1px;" onclick="payUnicef()">
+                <img src="https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png" alt="Unicef" class="">
+            </div>
+        </div>
+
+
+        <script>
+            function uniqueID() {
+                return Math.floor(Math.random() * Date.now())
+            }
+
+            function payByBank(name, iban) {
+                fetch("https://demo-backend.yapily.com/hosted/payment-requests", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "userSettings": {
+                            "language": "nl",
+                            "location": "NL"
+                        },
+                        "institutionIdentifiers": {
+                            "institutionCountryCode": "NL"
+                        },
+                        "redirectUrl": "https://mathdwrt.github.io/yapily-hosted-testing/callback.html",
+                        "paymentRequestDetails": {
+                            "paymentIdempotencyId": `${uniqueID()}`,
+                            "amountDetails": {
+                                "amountToPay": "1",
+                                "currency": "EUR"
+                            },
+                            "reference": "Donation",
+                            "contextType": "OTHER",
+                            "type": "DOMESTIC_PAYMENT",
+                            "paymentRail": "FPS",
+                            "payee": {
+                                "name": name,
+                                "accountIdentifications": [
+                                    {
+                                        "type": "IBAN",
+                                        "identification": iban
+                                    }
+                                ]
+                            },
+                        }
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "access-control-allow-origin": "*"
+                    }
+                })
+                    .then((response) => response.json())
+                    .then(json => window.location.href = `${json.data.hostedUrl}&merchantId=Green`)
+            }
+
+            function payWWF() {
+                payByBank("WWF", "NL31RABO0300000030")
+            }
+
+
+            function payUnicef() {
+                payByBank("UNICEF", "NL86INGB0000000121")
+            }
+        </script>
+    </div>
+</body>
+
+</html>
