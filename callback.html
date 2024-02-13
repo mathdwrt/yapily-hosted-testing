@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Status</title>
     <style>
         table,
         th,
@@ -23,14 +22,14 @@
         }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js"></script>
 </head>
 
 <body class="flex flex-col items-center px-6 py-8">
 
     <h1 id="message" class="text-3xl font-bold text-center"></h1>
 
-    <h2 id="message" class="text-2xl font-bold text-center mt-8 mb-3">Your payment details / Ihre
-        Zahlungsdaten</h2>
+    <h2 id="details" class="text-2xl font-bold text-center mt-8 mb-3"></h2>
 
     <table id="paramsTable">
         <thead>
@@ -90,11 +89,15 @@
             var messageDiv = document.getElementById('message');
             var paramsTable = document.getElementById('paramsTable').getElementsByTagName('tbody')[0];
 
+            const { details, success, error } = countries[params.language].text;
+
+            document.getElementById('details').innerText = `${details} / Your payment details`
+
             // Determine the message and style based on 'error' parameter
             if (params.error) {
-                messageDiv.innerHTML = '<p class="error">Oops, something went wrong... / Ups, da ist etwas schief gelaufen...</p>';
+                messageDiv.innerHTML = `<p class="error">${error} / Oops, something went wrong...</p>`;
             } else {
-                messageDiv.innerHTML = '<p class="success">Thank you! Your payment was successful. / Dankeschön! Ihre Zahlung war erfolgreich.</p>';
+                messageDiv.innerHTML = `<p class="success">${success} / Thank you! Your payment was successful</p>`;
             }
 
             // Add the URL parameters to the table
