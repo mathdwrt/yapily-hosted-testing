@@ -126,6 +126,28 @@ function uniqueID() {
   return Math.floor(Math.random() * Date.now());
 }
 
+function createDataRequest({ language, location, institutionCountryCode }) {
+  fetch("https://demo-backend.yapily.com/hosted/consent-requests", {
+    method: "POST",
+    body: JSON.stringify({
+      institutionIdentifiers: {
+        institutionCountryCode,
+      },
+      userSettings: { language, location },
+      redirectUrl: "https://display-parameters.com/",
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "access-control-allow-origin": "*",
+    },
+  })
+    .then((response) => response.json())
+    .then(
+      (json) =>
+        (window.location.href = `${json.data.hostedUrl}&merchantId=Green`)
+    );
+}
+
 function payByBank({ language, location, institutionCountryCode }, name, iban) {
   fetch("https://demo-backend.yapily.com/hosted/payment-requests", {
     method: "POST",
