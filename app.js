@@ -27,6 +27,29 @@ const countries = {
       error: "Oops, une erreur est survenue",
     },
   },
+  be: {
+    request: {
+      language: "fr",
+      location: "BE",
+      institutionCountryCode: "BE",
+    },
+    charities: [
+      {
+        name: "UNICEF",
+        logo: "https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png",
+        IBAN: "BE31000000005555",
+      },
+    ],
+    text: {
+      title:
+        "Testez notre méthode de paiement en faisant un don de 1€ à une association caritative",
+      subtitle:
+        "Sélectionnez votre organisation caritative préférée ci-dessous pour lancer le processus de paiement et faire un don de 1€",
+      details: "Voice les détails de votre paiement",
+      success: "Merci! Votre paiment a bien été effectué",
+      error: "Oops, une erreur est survenue",
+    },
+  },
   es: {
     request: {
       language: "es",
