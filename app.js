@@ -182,7 +182,7 @@ function payByBank({ language, location, institutionCountryCode }, name, iban) {
       institutionIdentifiers: {
         institutionCountryCode,
       },
-      redirectUrl: `https://mathdwrt.github.io/yapily-hosted-testing/callback.html?language=${language}`,
+      redirectUrl: "https://display-parameters.com/",
       paymentRequestDetails: {
         paymentIdempotencyId: `${uniqueID()}`,
         amountDetails: {
