@@ -1,7 +1,7 @@
 const countries = {
   fr: {
     request: {
-      language: "en",
+      language: "fr",
       location: "FR",
       institutionCountryCode: "FR",
     },
