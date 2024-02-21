@@ -143,6 +143,34 @@ const countries = {
       error: "Oeps, er ging iets mis...",
     },
   },
+  at: {
+    request: {
+      language: "de",
+      location: "AT",
+      institutionCountryCode: "AT",
+    },
+    charities: [
+      {
+        name: "UNICEF",
+        logo: "https://demo.yapily.com/_nuxt/img/charity-generic-unicef.258749b.png",
+        IBAN: " AT466000000001516500",
+      },
+      {
+        name: "WWF",
+        logo: "https://demo.yapily.com/_nuxt/img/charity-generic-wwf.7421ff8.png",
+        IBAN: "AT262011129112683901",
+      },
+    ],
+    text: {
+      title:
+        "Testen Sie unsere Payment Journey, indem Sie 1 € an eine Wohltätigkeitsorganisation spenden",
+      subtitle:
+        "Wählen Sie unten Ihre bevorzugte Wohltätigkeitsorganisation aus, um die Zahlung einzuleiten und mit einer Spende von 1 € fortzufahren",
+      details: "Ihre Zahlungsdaten",
+      success: "Dankeschön! Ihre Zahlung war erfolgreich",
+      error: "Ups, da ist etwas schief gelaufen...",
+    },
+  },
 };
 
 function uniqueID() {
